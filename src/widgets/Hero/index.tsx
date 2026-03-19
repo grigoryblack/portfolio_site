@@ -1,16 +1,19 @@
-'use client';
+"use client";
 
-import React from 'react';
-import styles from './index.module.scss';
-import LineWaves from '@/shared/layout/HeroBackground';
-import StaggeredMenu from '@/shared/components/Navigation';
+import React from "react";
+import styles from "./index.module.scss";
+import LineWaves from "@/shared/layout/HeroBackground";
+import StaggeredMenu from "@/shared/components/Navigation";
+import TextType from "@/shared/components/TypeText";
+import TextPressure from "@/shared/components/PressureText";
+import { Button } from "@/shared/ui";
 
 const Hero = () => {
   const menuItems = [
-    { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-    { label: 'About', ariaLabel: 'Learn about us', link: '№about' },
-    { label: 'Services', ariaLabel: 'View our services', link: '/services' },
-    { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' },
+    { label: "Home", ariaLabel: "Go to home page", link: "/" },
+    { label: "About", ariaLabel: "Learn about us", link: "№about" },
+    { label: "Services", ariaLabel: "View our services", link: "/services" },
+    { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
   ];
   return (
     <section id="hero" className={styles.wrapper}>
@@ -32,9 +35,24 @@ const Hero = () => {
         items={menuItems}
         displaySocials
         displayItemNumbering={true}
-        onMenuOpen={() => console.log('Menu opened')}
-        onMenuClose={() => console.log('Menu closed')}
       />
+
+      <div className={styles.wrapper__container}>
+        <TextPressure
+          text="Front-dev"
+          flex
+          alpha={false}
+          stroke={false}
+          width
+          weight
+          italic
+          minFontSize={36}
+        />
+
+        <Button size="l" variant="primary">
+          Contact me
+        </Button>
+      </div>
     </section>
   );
 };

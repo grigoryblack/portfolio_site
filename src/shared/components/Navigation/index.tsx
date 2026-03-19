@@ -1,7 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './StaggeredMenu.scss';
-import ThemeToggle from '../../ui/ThemeToggle';
+import { ThemeToggle } from "@/shared/ui";
 
 export interface StaggeredMenuItem {
   label: string;
