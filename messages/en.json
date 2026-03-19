@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services", 
+    "contact": "Contact",
+    "menuOpen": "Menu opened",
+    "menuClosed": "Menu closed"
+  },
+  "hero": {
+    "title": "Front-dev",
+    "contactButton": "Contact me"
+  },
+  "common": {
+    "language": "Language"
+  }
+}

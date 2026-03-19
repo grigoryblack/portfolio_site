@@ -1,7 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './StaggeredMenu.scss';
-import { ThemeToggle } from "@/shared/ui";
+import { ThemeToggle, LanguageSelector } from "@/shared/ui";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -370,7 +370,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <div className="sm-prelayer sm-prelayer-2" />
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <ThemeToggle className="sm-theme-toggle" />
+        <div className="sm-controls">
+          <LanguageSelector />
+          <ThemeToggle className="sm-theme-toggle" />
+        </div>
         <button
           ref={toggleBtnRef}
           className="sm-toggle"

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from '../../shared/contexts/LocaleContext';
 import styles from "./index.module.scss";
 import LineWaves from "@/shared/layout/HeroBackground";
 import StaggeredMenu from "@/shared/components/Navigation";
@@ -9,11 +10,14 @@ import TextPressure from "@/shared/components/PressureText";
 import { Button } from "@/shared/ui";
 
 const Hero = () => {
+  const tNav = useTranslations('navigation');
+  const tHero = useTranslations('hero');
+  
   const menuItems = [
-    { label: "Home", ariaLabel: "Go to home page", link: "/" },
-    { label: "About", ariaLabel: "Learn about us", link: "№about" },
-    { label: "Services", ariaLabel: "View our services", link: "/services" },
-    { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+    { label: tNav('home'), ariaLabel: "Go to home page", link: "/" },
+    { label: tNav('about'), ariaLabel: "Learn about us", link: "№about" },
+    { label: tNav('services'), ariaLabel: "View our services", link: "/services" },
+    { label: tNav('contact'), ariaLabel: "Get in touch", link: "/contact" },
   ];
   return (
     <section id="hero" className={styles.wrapper}>
@@ -50,7 +54,7 @@ const Hero = () => {
         />
 
         <Button size="l" variant="primary">
-          Contact me
+          {tHero('contactButton')}
         </Button>
       </div>
     </section>

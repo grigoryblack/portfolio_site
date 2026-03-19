@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Услуги",
+    "contact": "Контакты",
+    "menuOpen": "Меню открыто",
+    "menuClosed": "Меню закрыто"
+  },
+  "hero": {
+    "title": "Front-dev",
+    "contactButton": "Связаться со мной"
+  },
+  "common": {
+    "language": "Язык"
+  }
+}

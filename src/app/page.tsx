@@ -1,9 +1,6 @@
-import Hero from '@/widgets/Hero';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+export default function RootPage() {
+  // Redirect to default locale
+  redirect('/ru');
 }
