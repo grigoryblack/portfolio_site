@@ -1,5 +1,9 @@
 {
   "navigation": {
+    "menu": "Menu",
+    "close": "Close",
+    "light": "Light",
+    "dark": "Dark",
     "home": "Home",
     "about": "About",
     "services": "Services", 

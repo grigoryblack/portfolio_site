@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { useTranslations } from '../../shared/contexts/LocaleContext';
+import { useTranslations } from "@/shared/contexts/LocaleContext";
 import styles from "./index.module.scss";
 import LineWaves from "@/shared/layout/HeroBackground";
 import StaggeredMenu from "@/shared/components/Navigation";
-import TextType from "@/shared/components/TypeText";
 import TextPressure from "@/shared/components/PressureText";
 import { Button } from "@/shared/ui";
 
@@ -19,6 +18,7 @@ const Hero = () => {
     { label: tNav('services'), ariaLabel: "View our services", link: "/services" },
     { label: tNav('contact'), ariaLabel: "Get in touch", link: "/contact" },
   ];
+
   return (
     <section id="hero" className={styles.wrapper}>
       <LineWaves

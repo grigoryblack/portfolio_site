@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import styles from './index.module.scss';
+import { useTranslations } from "@/shared/contexts/LocaleContext";
 
 interface ThemeToggleProps {
   className?: string;
@@ -11,6 +12,7 @@ interface ThemeToggleProps {
 export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const tNav = useTranslations("navigation");
 
   // Используем useLayoutEffect для синхронного обновления до рендера
   useEffect(() => {
@@ -79,7 +81,6 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
           </svg>
         )}
       </span>
-      <span className={styles.label}>{theme === 'light' ? 'Dark' : 'Light'}</span>
     </button>
   );
 };
