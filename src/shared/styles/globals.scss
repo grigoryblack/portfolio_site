@@ -1,0 +1,477 @@
+@use 'variables' as *;
+
+// Обнуляющие стили (CSS Reset)
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Убираем стандартные отступы у заголовков
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+// Убираем стандартные отступы у параграфов
+p {
+  margin: 0;
+}
+
+// Убираем стандартные отступы у списков
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Убираем стандартные отступы у цитат
+blockquote,
+q {
+  margin: 0;
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+// Сброс для таблиц
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Сброс для форм
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  appearance: button;
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+[type='checkbox'],
+[type='radio'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type='search']::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  appearance: button;
+  font: inherit;
+}
+
+// Сброс для медиа элементов
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+// Сброс для ссылок
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+// Сброс для выделения текста
+::selection {
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
+}
+
+::-moz-selection {
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
+}
+
+// Скрытие элементов
+[hidden] {
+  display: none !important;
+}
+
+// CSS Custom Properties для использования в компонентах
+:root {
+  // Цвета (светлая тема)
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-background: #{$color-background};
+  --color-surface: #{$color-surface};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-border: #{$color-border};
+  --color-border-light: #{$color-border-light};
+
+  // Состояния
+  --color-hover: #{$color-hover-light};
+  --color-focus: #{$color-focus-light};
+  --color-active: #{$color-active-light};
+
+  // Тени
+  --box-shadow-sm: #{$box-shadow-sm};
+  --box-shadow-base: #{$box-shadow-base};
+  --box-shadow-md: #{$box-shadow-md};
+  --box-shadow-lg: #{$box-shadow-lg};
+  --box-shadow-xl: #{$box-shadow-xl};
+  --box-shadow-2xl: #{$box-shadow-2xl};
+  --box-shadow-inner: #{$box-shadow-inner};
+
+  // Переходы
+  --transition-all: #{$transition-all};
+  --transition-colors: #{$transition-colors};
+  --transition-opacity: #{$transition-opacity};
+  --transition-transform: #{$transition-transform};
+
+  // Акцентный цвет для меню
+  --sm-accent: #{$color-gray-600};
+}
+
+// Темная тема (системные настройки)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    // Цвета (темная тема)
+    --color-primary: #{$color-primary-dark};
+    --color-secondary: #{$color-secondary-dark};
+    --color-background: #{$color-background-dark};
+    --color-surface: #{$color-surface-dark};
+    --color-text-primary: #{$color-text-primary-dark};
+    --color-text-secondary: #{$color-text-secondary-dark};
+    --color-text-muted: #{$color-text-muted-dark};
+    --color-border: #{$color-border-dark};
+    --color-border-light: #{$color-border-light-dark};
+
+    // Состояния
+    --color-hover: #{$color-hover-dark};
+    --color-focus: #{$color-focus-dark};
+    --color-active: #{$color-active-dark};
+
+    // Тени
+    --box-shadow-sm: #{$box-shadow-sm-dark};
+    --box-shadow-base: #{$box-shadow-base-dark};
+    --box-shadow-md: #{$box-shadow-md-dark};
+    --box-shadow-lg: #{$box-shadow-lg-dark};
+    --box-shadow-xl: #{$box-shadow-xl-dark};
+    --box-shadow-2xl: #{$box-shadow-2xl-dark};
+    --box-shadow-inner: #{$box-shadow-inner-dark};
+
+    // Акцентный цвет для меню в темной теме
+    --sm-accent: #{$color-gray-400};
+  }
+}
+
+// Принудительная темная тема через data-theme
+[data-theme='dark'] {
+  // Цвета (темная тема)
+  --color-primary: #{$color-primary-dark};
+  --color-secondary: #{$color-secondary-dark};
+  --color-background: #{$color-background-dark};
+  --color-surface: #{$color-surface-dark};
+  --color-text-primary: #{$color-text-primary-dark};
+  --color-text-secondary: #{$color-text-secondary-dark};
+  --color-text-muted: #{$color-text-muted-dark};
+  --color-border: #{$color-border-dark};
+  --color-border-light: #{$color-border-light-dark};
+
+  // Состояния
+  --color-hover: #{$color-hover-dark};
+  --color-focus: #{$color-focus-dark};
+  --color-active: #{$color-active-dark};
+
+  // Тени
+  --box-shadow-sm: #{$box-shadow-sm-dark};
+  --box-shadow-base: #{$box-shadow-base-dark};
+  --box-shadow-md: #{$box-shadow-md-dark};
+  --box-shadow-lg: #{$box-shadow-lg-dark};
+  --box-shadow-xl: #{$box-shadow-xl-dark};
+  --box-shadow-2xl: #{$box-shadow-2xl-dark};
+  --box-shadow-inner: #{$box-shadow-inner-dark};
+
+  // Акцентный цвет для меню в темной теме
+  --sm-accent: #{$color-gray-400};
+}
+
+// Принудительная светлая тема через data-theme
+[data-theme='light'] {
+  // Цвета (светлая тема)
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-background: #{$color-background};
+  --color-surface: #{$color-surface};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-border: #{$color-border};
+  --color-border-light: #{$color-border-light};
+
+  // Состояния
+  --color-hover: #{$color-hover-light};
+  --color-focus: #{$color-focus-light};
+  --color-active: #{$color-active-light};
+
+  // Тени
+  --box-shadow-sm: #{$box-shadow-sm};
+  --box-shadow-base: #{$box-shadow-base};
+  --box-shadow-md: #{$box-shadow-md};
+  --box-shadow-lg: #{$box-shadow-lg};
+  --box-shadow-xl: #{$box-shadow-xl};
+  --box-shadow-2xl: #{$box-shadow-2xl};
+  --box-shadow-inner: #{$box-shadow-inner};
+
+  // Акцентный цвет для меню в светлой теме
+  --sm-accent: #{$color-gray-600};
+}
+
+// Дополнительные базовые стили
+html {
+  height: 100%;
+  font-size: $font-size-base;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// Стили для ссылок с переходами
+a {
+  transition: var(--transition-colors);
+
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+// Утилитарные классы для отступов
+.p-0 {
+  padding: $spacing-0;
+}
+.p-1 {
+  padding: $spacing-1;
+}
+.p-2 {
+  padding: $spacing-2;
+}
+.p-3 {
+  padding: $spacing-3;
+}
+.p-4 {
+  padding: $spacing-4;
+}
+.p-5 {
+  padding: $spacing-5;
+}
+.p-6 {
+  padding: $spacing-6;
+}
+.p-8 {
+  padding: $spacing-8;
+}
+
+.m-0 {
+  margin: $spacing-0;
+}
+.m-1 {
+  margin: $spacing-1;
+}
+.m-2 {
+  margin: $spacing-2;
+}
+.m-3 {
+  margin: $spacing-3;
+}
+.m-4 {
+  margin: $spacing-4;
+}
+.m-5 {
+  margin: $spacing-5;
+}
+.m-6 {
+  margin: $spacing-6;
+}
+.m-8 {
+  margin: $spacing-8;
+}
+
+// Утилитарные классы для текста
+.text-xs {
+  font-size: $font-size-xs;
+}
+.text-sm {
+  font-size: $font-size-sm;
+}
+.text-base {
+  font-size: $font-size-base;
+}
+.text-lg {
+  font-size: $font-size-lg;
+}
+.text-xl {
+  font-size: $font-size-xl;
+}
+.text-2xl {
+  font-size: $font-size-2xl;
+}
+.text-3xl {
+  font-size: $font-size-3xl;
+}
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+// Темная тема для HTML
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

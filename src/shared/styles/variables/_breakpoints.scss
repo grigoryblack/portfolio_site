@@ -1,0 +1,71 @@
+// Брейкпоинты для адаптивного дизайна
+$breakpoint-xs: 320px; // Мобильные устройства (маленькие)
+$breakpoint-sm: 480px; // Мобильные устройства
+$breakpoint-md: 768px; // Планшеты
+$breakpoint-lg: 1024px; // Десктоп (маленький)
+$breakpoint-xl: 1280px; // Десктоп
+$breakpoint-2xl: 1536px; // Большие экраны
+
+// Миксины для медиа-запросов
+@mixin mobile-xs {
+  @media (max-width: #{$breakpoint-xs - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-md}) and (max-width: #{$breakpoint-lg - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media (min-width: #{$breakpoint-2xl}) {
+    @content;
+  }
+}
+
+// Миксины для минимальной ширины
+@mixin min-width($width) {
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+
+// Миксины для максимальной ширины
+@mixin max-width($width) {
+  @media (max-width: #{$width - 1px}) {
+    @content;
+  }
+}
+
+// Миксины для диапазона ширины
+@mixin between-widths($min-width, $max-width) {
+  @media (min-width: #{$min-width}) and (max-width: #{$max-width - 1px}) {
+    @content;
+  }
+}

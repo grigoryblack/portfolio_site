@@ -1,0 +1,24 @@
+// Основной файл переменных
+@forward 'colors';
+@forward 'breakpoints';
+@forward 'typography';
+@forward 'spacing';
+
+// Переходы и анимации
+$transition-duration-fast: 150ms;
+$transition-duration-normal: 300ms;
+$transition-duration-slow: 500ms;
+
+$transition-timing-ease: ease;
+$transition-timing-ease-in: ease-in;
+$transition-timing-ease-out: ease-out;
+$transition-timing-ease-in-out: ease-in-out;
+
+// Стандартные переходы
+$transition-all: all $transition-duration-normal $transition-timing-ease-in-out;
+$transition-colors:
+  color $transition-duration-normal $transition-timing-ease-in-out,
+  background-color $transition-duration-normal $transition-timing-ease-in-out,
+  border-color $transition-duration-normal $transition-timing-ease-in-out;
+$transition-opacity: opacity $transition-duration-normal $transition-timing-ease-in-out;
+$transition-transform: transform $transition-duration-normal $transition-timing-ease-in-out;

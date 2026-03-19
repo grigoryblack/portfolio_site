@@ -1,0 +1,13 @@
+@use '../../shared/styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+
+  .wrapper__container {
+    z-index: 20;
+    padding: 20px;
+    position: relative;
+  }
+}
