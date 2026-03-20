@@ -37,7 +37,6 @@ const Hero = () => {
       <StaggeredMenu
         position="right"
         items={menuItems}
-        displaySocials
         displayItemNumbering={true}
       />
 

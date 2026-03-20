@@ -17,5 +17,59 @@
   },
   "common": {
     "language": "Language"
+  },
+  "about": {
+    "title": "About me",
+    "titleDesktop": "A little about myself",
+    "name": "Druzhenkov Grigory",
+    "role": "Role",
+    "roleValue": "Frontend-developer",
+    "experience": "work experience",
+    "experienceValue": "4 years",
+    "education": "Education",
+    "educationUniversity": "Ural Federal University named after the first President of Russia B. N. Yeltsin, (UrFU), Yekaterinburg",
+    "educationPeriod": "August 2020 — June 2024",
+    "educationDegree": "Applied Informatics",
+    "militaryTraining": "Military training center named after Hero of the Soviet Union B. G. Rossokhin, (UrFU), Yekaterinburg",
+    "militaryPeriod": "November 2021 — July 2024",
+    "militaryRank": "Troops: Air Defense, Lieutenant",
+    "currentWork": "Current workplace",
+    "currentWorkDescription": "services for automating work with leads at all stages of the funnel."
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "detailsButton": "Details",
+    "technologies": "Technologies:",
+    "callibri": {
+      "title": "Callibri - Lead Management Platform",
+      "period": "September 2024 — present",
+      "description": "Development and redesign of key company products: 'Multitracking' and 'Email-tracking'",
+      "fullDescription": "**Responsibilities:**\n– Development and redesign of key company products ('Multitracking', 'Email-tracking') (80% of MT frontend codebase, 100% of ET codebase).\n– Implementation of UX/UI logic for client-side\n– Code-review and team mentoring\n– Preparation of project documentation and reports\n– Cross-functional interaction with departments\n\n**Key Achievements:**\n– Conducted complete redesign of flagship product 'Multitracking', improving user personal account convenience (30% reduction in support requests for setup).\n– Led redesign of 'Email-tracking' product and implemented entire client-side of the project (90% reduction in support requests for setup).\n– Initiated rework of admin panel for landings, improving UX for marketing teams (added about 10 new features for content creation).\n– Development of interactive statistics dashboard with report import capability. (35% of codebase)\n\n**Main Tasks:**\n- Writing program code\n- Refactoring program code\n- Development and maintenance of client-side web application\n- Fixing identified bugs\n- Implementation of functionality and program logic according to technical specifications and architectural solutions\n- Development of user interface, including its interactive elements"
+    },
+    "simpleIt": {
+      "title": "Simple IT - Corporate Applications",
+      "period": "January 2024 — August 2024 (8 months)",
+      "description": "Development of client-side admin panels and server logic for corporate applications",
+      "fullDescription": "**Responsibilities:**\n– Development of client-side admin panels and server logic for corporate applications\n– Interaction with clients and development team\n– Code-review and technical documentation maintenance\n\n**Key Achievements:**\n– Developed admin panel for corporate application 'Group VIS', fully covering UI/UX tasks (100% of admin panel codebase).\n– Served as teamlead on SLOT project (powerbank sharing): wrote server part with multiple TCP connections support and admin panel integration.\n– Enhanced 'Change Me' service: implemented new functionality and fixed critical bugs, which increased traffic and conversion."
+    },
+    "cablewalker": {
+      "title": "CableWalker - Drone Management",
+      "period": "February 2023 — December 2023 (11 months)",
+      "description": "Development of corporate website, admin panel and software for CableWalker Class drone management",
+      "fullDescription": "**Responsibilities:**\n– Development of corporate website and admin panel (SEO improvement from 70% to 99%)\n– Creation of desktop and mobile applications for CableWalker Class drone management\n– Implementation of client and server parts of software\n\n**Key Achievements:**\n– Completely rewrote corporate website in React with admin panel for content management (100% codebase update, clients stay on site 25% longer than usual).\n– Developed MVP mobile and desktop software for CableWalker Class drone management, including teacher software and server part. (80% of codebase written from scratch).\n– Successfully demonstrated product at investor and client presentations\n– Transferred project to next team for industrial operation."
+    },
+    "medicos": {
+      "title": "MEDICOS - Medical CRM System",
+      "period": "August 2021 — December 2022 (1 year 5 months)",
+      "description": "Development of CRM system for newborn tracking in pathology department of ODKB Yekaterinburg",
+      "fullDescription": "**Responsibilities:**\n– Development of CRM system for newborn tracking in pathology department of ODKB Yekaterinburg\n– Implementation of client-side and UI/UX design\n– Communication with client and users for requirements gathering\n– Testing and implementation of ready solution\n\n**Key Achievements:**\n– Created CRM system from scratch, fully covering frontend tasks (100% of codebase)\n– Ensured correct accounting and storage of patient data\n– System successfully implemented and used in medical institution\n– Project was delivered and recognized as successful by the client (reduced new patient processing time from 1 hour to 25 minutes)."
+    }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "description": "Currently looking for interesting projects where I can use my full potential and gain unique experience."
+  },
+  "footer": {
+    "createdBy": "Created by @mask.bright"
   }
 }

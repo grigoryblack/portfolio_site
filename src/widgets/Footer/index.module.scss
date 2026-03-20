@@ -1,0 +1,45 @@
+@use '../../shared/styles/variables' as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  margin-top: 3rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 2rem;
+    margin-top: 5rem;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    padding: 3rem;
+  }
+
+  h4 {
+    font-family: $font-family-sans;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-normal;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-align: center;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: $font-size-base;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      font-size: $font-size-lg;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

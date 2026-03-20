@@ -24,24 +24,35 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Инициализация темы на клиенте
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+        return savedTheme;
+      }
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
+    }
+    return 'light';
+  });
   const [mounted, setMounted] = useState(false);
 
+  // Применяем тему немедленно при инициализации
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true);
-      // Инициализируем тему после монтирования
+    if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') as Theme;
-      if (savedTheme) {
+      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
         setTheme(savedTheme);
       } else {
-        // Проверяем системные настройки пользователя
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(prefersDark ? 'dark' : 'light');
+        const initialTheme = prefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', initialTheme);
+        setTheme(initialTheme);
       }
-    }, 0);
-
-    return () => clearTimeout(timer);
+    }
+    setMounted(true);
   }, []);
 
   useEffect(() => {

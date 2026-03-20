@@ -1,0 +1,155 @@
+@use '../../shared/styles/variables' as *;
+
+.wrapper {
+  width: 100%;
+  padding: 0;
+  background: var(--color-background);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  margin-top: 0rem;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: var(--color-background);
+  
+  h2 {
+    font-family: $font-family-sans;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  width: 100%;
+}
+
+.cardWrapper {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+// Responsive breakpoints
+@media (min-width: $breakpoint-sm) {
+  .wrapper {
+    padding: 0;
+    margin-top: 10rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .wrapper {
+    padding: 0;
+  }
+  
+  .title {
+    margin-bottom: 3rem;
+    
+    h2 {
+      font-size: $font-size-5xl;
+    }
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .wrapper {
+    padding: 0;
+  }
+  
+  .title {
+    margin-bottom: 3rem;
+    
+    h2 {
+      font-size: $font-size-6xl;
+    }
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+}
+
+// Animation states
+.cardWrapper.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+// Stagger animation delays (applied via JavaScript)
+.cardWrapper:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.cardWrapper:nth-child(2) {
+  transition-delay: 150ms;
+}
+
+.cardWrapper:nth-child(3) {
+  transition-delay: 300ms;
+}
+
+.cardWrapper:nth-child(4) {
+  transition-delay: 450ms;
+}
+
+// Hover effects for the entire grid
+.grid:hover .cardWrapper:not(:hover) {
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
+.grid .cardWrapper:hover {
+  opacity: 1;
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+// Focus and accessibility
+.cardWrapper:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .cardWrapper {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+  
+  .grid:hover .cardWrapper:not(:hover) {
+    transform: none;
+  }
+  
+  .grid .cardWrapper:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,35 @@
+.titled__card {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
+  background: var(--color-text-primary);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-lg);
+  overflow: hidden;
+  will-change: transform;
+
+  // Инвертируем цвета текста внутри карточки
+  h1, h2, h3, h4, h5, h6, p, span {
+    color: var(--color-background);
+  }
+}
+
+.titled__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+                  to right,
+                  rgba(128, 128, 128, 0.1) 0%,
+                  rgba(128, 128, 128, 0) 20%,
+                  rgba(128, 128, 128, 0) 80%,
+                  rgba(128, 128, 128, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}

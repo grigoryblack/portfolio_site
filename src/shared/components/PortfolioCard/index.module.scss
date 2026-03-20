@@ -1,0 +1,405 @@
+@use '../../../shared/styles/variables' as *;
+
+.portfolioCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow-md);
+  filter: grayscale(100%);
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-xl);
+    filter: grayscale(0%);
+
+    .overlay {
+      opacity: 1;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+    }
+
+    .content {
+      transform: translateY(-10px);
+      opacity: 1;
+      text-align: center;
+    }
+
+    .description {
+      opacity: 1;
+      max-height: 100px;
+    }
+
+    .technologies {
+      opacity: 1;
+      max-height: 100px;
+    }
+
+    .button {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  backdrop-filter: blur(1px);
+  opacity: 1;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.content {
+  text-align: left;
+  color: white;
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.4s ease 0.1s;
+  width: 100%;
+}
+
+.title {
+  font-family: $font-family-sans;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.period {
+  font-family: $font-family-sans;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+.description {
+  font-family: $font-family-sans;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  opacity: 1;
+  max-height: 100px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tech {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+  background: var(--color-primary) !important;
+  color: var(--color-background) !important;
+  border: none !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease !important;
+  opacity: 0;
+  transform: translateY(20px);
+
+  &:hover {
+    background: var(--color-text-primary) !important;
+    color: var(--color-background) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--box-shadow-lg) !important;
+  }
+}
+
+// Modal Styles
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.modalContent {
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--box-shadow-2xl);
+  animation: modalSlideIn 0.3s ease;
+  margin: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--color-hover-light);
+    color: var(--color-text-primary);
+  }
+}
+
+.modalTitle {
+  font-family: $font-family-sans;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  padding-right: 3rem;
+}
+
+.modalBody {
+  color: var(--color-text-primary);
+}
+
+.modalDescription {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-family: $font-family-sans;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  margin: 1.5rem 0 1rem 0;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.paragraph {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.listItem {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+  list-style: none;
+
+  &::before {
+    content: '•';
+    color: var(--color-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.modalTechnologies {
+  h4 {
+    font-family: $font-family-sans;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.modalTech {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-md);
+  }
+}
+
+// Animations
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Mobile styles (default)
+@media (max-width: #{$breakpoint-md - 1px}) {
+  .technologies {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  .description {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  .portfolioCard:hover {
+    .technologies {
+      opacity: 0;
+      max-height: 0;
+    }
+
+    .description {
+      opacity: 0;
+      max-height: 0;
+    }
+
+    .button {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Desktop styles
+@media (min-width: $breakpoint-md) {
+  .portfolioCard {
+    &:hover {
+      transform: translateY(-12px);
+    }
+  }
+
+  .overlay {
+    padding: 2.5rem;
+  }
+
+  .title {
+    font-size: $font-size-2xl;
+  }
+
+  .description {
+    font-size: $font-size-base;
+  }
+
+  .technologies {
+    justify-content: center;
+  }
+}
+
+@media (max-width: #{$breakpoint-md - 1px}) {
+  .modal {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    max-height: 90vh;
+    max-width: 100%;
+  }
+
+  .modalTitle {
+    font-size: $font-size-xl;
+    padding-right: 2.5rem;
+  }
+
+  .closeButton {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: $font-size-base;
+    margin: 1rem 0 0.75rem 0;
+  }
+
+  .paragraph, .listItem {
+    font-size: $font-size-sm;
+  }
+}
