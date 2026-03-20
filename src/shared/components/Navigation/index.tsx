@@ -328,6 +328,25 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     }
   }, [playClose, animateIcon, animateText, onMenuClose]);
 
+  const handleSmoothScroll = useCallback((e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    // Check if it's an anchor link (starts with #)
+    if (link.startsWith('#')) {
+      e.preventDefault();
+      const targetId = link.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Close menu after scrolling
+        closeMenu();
+      }
+    }
+  }, [closeMenu]);
+
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return;
 
@@ -408,6 +427,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     href={it.link}
                     aria-label={it.ariaLabel}
                     data-index={idx + 1}
+                    onClick={(e) => handleSmoothScroll(e, it.link)}
                   >
                     <span className="sm-panel-itemLabel">{it.label}</span>
                   </a>

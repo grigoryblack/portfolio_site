@@ -13,11 +13,21 @@ const Hero = () => {
   const tHero = useTranslations('hero');
   
   const menuItems = [
-    { label: tNav('home'), ariaLabel: "Go to home page", link: "/" },
-    { label: tNav('about'), ariaLabel: "Learn about us", link: "№about" },
-    { label: tNav('services'), ariaLabel: "View our services", link: "/services" },
-    { label: tNav('contact'), ariaLabel: "Get in touch", link: "/contact" },
+    { label: tNav('home'), ariaLabel: "Go to home page", link: "#hero" },
+    { label: tNav('about'), ariaLabel: "Learn about us", link: "#about" },
+    { label: tNav('portfolio'), ariaLabel: "View portfolio", link: "#portfolio" },
+    { label: tNav('contact'), ariaLabel: "Get in touch", link: "#contacts" },
   ];
+
+  const handleContactClick = () => {
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <section id="hero" className={styles.wrapper}>
@@ -52,7 +62,7 @@ const Hero = () => {
           minFontSize={36}
         />
 
-        <Button size="l" variant="primary">
+        <Button size="l" variant="primary" onClick={handleContactClick}>
           {tHero('contactButton')}
         </Button>
       </div>
